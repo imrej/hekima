@@ -1,0 +1,5 @@
+<div class="valeur with-margin-top">{{$ctrl.hekima.valeur}}</div>
+<div class="source with-margin-top" ng-if="$ctrl.hekima.source">{{$ctrl.hekima.source.titre}} (de {{$ctrl.hekima.source.auteur}})</div>
+<div class="tags with-margin-top" ng-if="$ctrl.hekima.tags.length > 0">
+  <div class="tag badge badge-info" ng-repeat="tag in $ctrl.hekima.tags track by tag.uri">{{tag.valeur}}</div>
+</div>

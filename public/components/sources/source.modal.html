@@ -1,0 +1,39 @@
+<div class="modal-body">
+    <h3 class="modal-title">Création</h3>
+    <div class="form-group">
+        <label for="source-contenu">Titre :</label>
+        <input type="text" class="form-control" id="source-contenu" ng-model="$ctrl.source.titre"></input>
+    </div>
+    <div class="form-group">
+        <label for="source-auteur">Autrice/Auteur :</label>
+        <input type="text" class="form-control" id="source-auteur" ng-model="$ctrl.source.auteur"></input>
+    </div>
+    <div class="form-group">
+        <label for="source-type">Type :</label>
+        <select id="source-type" class="form-control" ng-model="$ctrl.source.type">
+            <option>-- Type de source --</option>
+            <option valeu="livre">Livre</option>
+            <option valeu="journal">Journal</option>
+            <option valeu="film">Film</option>
+            <option valeu="docu">Documentaire</option>
+            <option valeu="discours">Discours</option>
+            <option valeu="conversation">Conversation</option>
+        </select>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="button btn-secondary"
+            ng-click="$ctrl.cancel()"
+            type="submit"
+            data-dismiss="modal">
+        <span class="glyphicon glyphicon-ban-circle"></span>
+        <span class="with-margin-left">Annuler</span>
+    </button><!--
+--><button class="button btn-primary"
+           ng-click="$ctrl.confirm()"
+           type="submit"
+           data-dismiss="modal">
+    <span class="glyphicon glyphicon-ok"></span><span class="with-margin-left">Enregistrer</span>
+</button>
+</div>
+<loading-pane ng-if="$ctrl.saving"></loading-pane>

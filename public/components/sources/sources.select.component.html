@@ -1,0 +1,18 @@
+<ui-select
+        ng-model="$ctrl.sourceTmp"
+        ng-model-options="{ allowInvalid: false, debounce: 300 }"
+        ng-change="$ctrl.onSelectSource($ctrl.sourceTmp);">
+    <ui-select-match placeholder="Source (livre, magazine)">
+        {{$select.selected.titre}}
+    </ui-select-match>
+    <ui-select-choices
+            repeat="suggestion in $ctrl.suggestionSources"
+            refresh=" $ctrl.searchSource($select.search)"
+            refresh-delay="300">
+        <div ng-if="suggestion.uri">{{suggestion.titre}}<span ng-if="suggestion.auteur"> de {{suggestion.auteur}}</span></div>
+        <div ng-if="!suggestion.uri">{{suggestion.titre}}<div class="small-link with-margin-left" ng-click="$ctrl.createSource(suggestion)">(Créer)</div></div>
+    </ui-select-choices>
+</ui-select>
+<div class="sources with-margin-top">
+  <div class="tag badge badge-primary" ng-repeat="source in $ctrl.sources track by uri"><div>{{source.titre}}</div><div class="close-icon" ng-click="$ctrl.removeSource(source)"><i class="fas fa-times"></i></div></div>
+</div>

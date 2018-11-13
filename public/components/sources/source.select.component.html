@@ -1,0 +1,14 @@
+<ui-select
+        ng-model="$ctrl.source"
+        ng-model-options="{ allowInvalid: false, debounce: 300 }"
+        ng-change="$ctrl.onSelectSource();">
+    <ui-select-match placeholder="Source (livre, magazine)">
+        {{$select.selected.titre}}
+    </ui-select-match>
+    <ui-select-choices
+            repeat="suggestion in $ctrl.suggestionSources"
+            refresh=" $ctrl.searchSource($select.search)"
+            refresh-delay="300">
+        <div>{{suggestion.titre}} de {{suggestion.auteur}}</div>
+    </ui-select-choices>
+</ui-select>

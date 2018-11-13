@@ -1,0 +1,17 @@
+<ui-select
+        ng-model="$ctrl.tagTmp"
+        ng-model-options="{ allowInvalid: false, debounce: 300 }"
+        ng-change="$ctrl.onSelectTag($ctrl.tagTmp);">
+    <ui-select-match placeholder="Étiquette">
+        {{$select.selected.valeur}}
+    </ui-select-match>
+    <ui-select-choices
+            repeat="suggestion in $ctrl.suggestionTags track by suggestion.uri"
+            refresh=" $ctrl.searchTags($select.search)"
+            refresh-delay="300">
+        <div>{{suggestion.valeur}}<div class="small-link with-margin-left" ng-if="!suggestion.uri" ng-click="$ctrl.createTag(suggestion)">(Créer)</div></div>
+    </ui-select-choices>
+</ui-select>
+<div class="tags with-margin-top">
+  <div class="tag badge badge-info" ng-repeat="tag in $ctrl.tags track by tag.uri"><div>{{tag.valeur}}</div><div class="close-icon" ng-click="$ctrl.removeTag(tag)"><i class="fas fa-times"></i></div></div>
+</div>
